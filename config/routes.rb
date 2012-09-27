@@ -1,4 +1,6 @@
 Requirements::Application.routes.draw do
+  devise_for :users
+
   resources :requirements
 
   resources :requirement_types
