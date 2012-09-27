@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @requirement_type.name
+
+= link_to 'Edit', edit_requirement_type_path(@requirement_type)
+\|
+= link_to 'Back', requirement_types_path

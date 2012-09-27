@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  description: MyText
+  rationale: MyText
+  originator: MyString
+  fit_criterion: MyText
+  customer_satisfaction: MyText
+  customer_dissatisfaction: MyText
+  priority: MyString
+  supporting_materials: MyText
+  history: MyText
+
+two:
+  description: MyText
+  rationale: MyText
+  originator: MyString
+  fit_criterion: MyText
+  customer_satisfaction: MyText
+  customer_dissatisfaction: MyText
+  priority: MyString
+  supporting_materials: MyText
+  history: MyText

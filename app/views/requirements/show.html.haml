@@ -1,0 +1,33 @@
+%p#notice= notice
+
+%p
+  %b Description:
+  = @requirement.description
+%p
+  %b Rationale:
+  = @requirement.rationale
+%p
+  %b Originator:
+  = @requirement.originator
+%p
+  %b Fit criterion:
+  = @requirement.fit_criterion
+%p
+  %b Customer satisfaction:
+  = @requirement.customer_satisfaction
+%p
+  %b Customer dissatisfaction:
+  = @requirement.customer_dissatisfaction
+%p
+  %b Priority:
+  = @requirement.priority
+%p
+  %b Supporting materials:
+  = @requirement.supporting_materials
+%p
+  %b History:
+  = @requirement.history
+
+= link_to 'Edit', edit_requirement_path(@requirement)
+\|
+= link_to 'Back', requirements_path
