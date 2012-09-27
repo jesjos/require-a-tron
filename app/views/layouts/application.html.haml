@@ -22,30 +22,25 @@
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
-          %a.brand(href="#") Requirements
+          %a.brand(href="#") Require-a-tron
           .container.nav-collapse
             %ul.nav
-              %li= link_to "Link 1", "/path1"
-              %li= link_to "Link 2", "/path2"
-              %li= link_to "Link 3", "/path3"
+              %li= link_to "Requirements", requirements_path
+              %li= link_to "Requirement types", requirement_types_path
 
     .container
 
+      - if notice
+        %p.notice= notice
+      - if alert
+        %p.alert= alert
+
       .content
         .row
-          .span9
-            = yield
-          .span3
-            .well.sidebar-nav
-              %h3 Sidebar
-              %ul.nav.nav-list
-                %li.nav-header Sidebar
-                %li= link_to "Link 1", "/path1"
-                %li= link_to "Link 2", "/path2"
-                %li= link_to "Link 3", "/path3"
+          = yield
     
       %footer
-        %p &copy; Company 2012
+        %p &copy; Jesper Josefsson 2012
     /
       Javascripts
       \==================================================

@@ -16,6 +16,8 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem 'haml-rails'
   gem 'twitter-bootstrap-rails'
+  gem 'twitter_bootstrap_form_for'
+  gem 'simple_form'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   gem 'therubyracer', :platforms => :ruby

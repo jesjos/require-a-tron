@@ -25,6 +25,7 @@ class RequirementsController < ApplicationController
   # GET /requirements/new.json
   def new
     @requirement = Requirement.new
+    @requirement_types = RequirementType.all.collect {|t| [t.name, t.id]}
 
     respond_to do |format|
       format.html # new.html.erb
