@@ -1,4 +1,5 @@
 class RequirementsController < ApplicationController
+  before_filter :fetchRequirementsAndTypes, only: [:new, :edit]
   # GET /requirements
   # GET /requirements.json
   def index
@@ -26,6 +27,7 @@ class RequirementsController < ApplicationController
   def new
     @requirement = Requirement.new
     @requirement_types = RequirementType.all.collect {|t| [t.name, t.id]}
+    @requirements = Requirement.all
 
     respond_to do |format|
       format.html # new.html.erb
@@ -58,6 +60,7 @@ class RequirementsController < ApplicationController
   # PUT /requirements/1.json
   def update
     @requirement = Requirement.find(params[:id])
+    params[:requirement][:dependency_ids] ||= []
 
     respond_to do |format|
       if @requirement.update_attributes(params[:requirement])
@@ -81,4 +84,11 @@ class RequirementsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  private 
+  def fetchRequirementsAndTypes
+    @requirement_types = RequirementType.all.collect {|t| [t.name, t.id]}
+    @requirements = Requirement.where("id != ?", params[:id])
+  end
+
 end

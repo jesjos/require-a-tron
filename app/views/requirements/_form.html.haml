@@ -5,45 +5,56 @@
       %ul
         - @requirement.errors.full_messages.each do |msg|
           %li= msg
+  .row
+    .span6
+      .control-group
+        = f.label :description, class: "control-label"
+        .controls
+          = f.text_area :description, rows: "3"
+      .control-group
+        = f.label :rationale, class: "control-label"
+        .controls
+          = f.text_area :rationale, rows: "3"
+      .control-group
+        = f.label :originator, class: "control-label"
+        .controls
+          = f.text_field :originator
+      .control-group
+        = f.label :fit_criterion, class: "control-label"
+        .controls
+          = f.text_area :fit_criterion, rows: "3"
+      .control-group
+        = f.label :customer_satisfaction, class: "control-label"
+        .controls
+          = f.text_area :customer_satisfaction, rows: "3"
+    .span6
+      .control-group
+        = f.label :customer_dissatisfaction, class: "control-label"
+        .controls
+          = f.text_area :customer_dissatisfaction, rows: "3"
+      .control-group
+        = f.label :priority, class: "control-label"
+        .controls
+          = f.text_field :priority
+      .control-group
+        = f.label :supporting_materials, class: "control-label"
+        .controls
+          = f.text_area :supporting_materials, rows: "3"
+      .control-group
+        = f.label :history, class: "control-label"
+        .controls
+          = f.text_area :history, rows: "3"
+      .control-group
+        = f.label :requirement_type, class: "control-label"
+        .controls= f.select :requirement_type_id, @requirement_types
+
+      .control-group
+        = f.label :dependencies, class: "control-label"
+        .controls
+          - for req in @requirements
+            %label.checkbox
+              = check_box_tag "requirement[dependency_ids][]", req.id, @requirement.dependencies.include?(req)
+              = req.description
   .control-group
-    = f.label :description, class: "control-label"
     .controls
-      = f.text_area :description, rows: "3"
-  .control-group
-    = f.label :rationale, class: "control-label"
-    .controls
-      = f.text_area :rationale, rows: "3"
-  .control-group
-    = f.label :originator, class: "control-label"
-    .controls
-      = f.text_field :originator
-  .control-group
-    = f.label :fit_criterion, class: "control-label"
-    .controls
-      = f.text_area :fit_criterion, rows: "3"
-  .control-group
-    = f.label :customer_satisfaction, class: "control-label"
-    .controls
-      = f.text_area :customer_satisfaction, rows: "3"
-  .control-group
-    = f.label :customer_dissatisfaction, class: "control-label"
-    .controls
-      = f.text_area :customer_dissatisfaction, rows: "3"
-  .control-group
-    = f.label :priority, class: "control-label"
-    .controls
-      = f.text_field :priority
-  .control-group
-    = f.label :supporting_materials, class: "control-label"
-    .controls
-      = f.text_area :supporting_materials, rows: "3"
-  .control-group
-    = f.label :history, class: "control-label"
-    .controls
-      = f.text_area :history, rows: "3"
-  .control-group
-    = f.label :requirement_type, class: "control-label"
-    .controls= f.select :requirement_type_id, @requirement_types
-  .control-group
-    .controls
-      = f.submit 'Save', class: "btn"
+      = f.submit 'Save', class: "btn btn-large btn-primary"

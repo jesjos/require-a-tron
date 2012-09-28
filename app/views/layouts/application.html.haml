@@ -28,17 +28,14 @@
               %li= link_to "Requirements", requirements_path
               %li= link_to "Requirement types", requirement_types_path
 
-    .container
-
+    .container.main-content
+      .login-info= "Logged in as #{current_user.email}"
       - if notice
         %p.notice= notice
       - if alert
         %p.alert= alert
-
-      .content
-        .row
-          = yield
-    
+      = yield
+      
       %footer
         %p &copy; Jesper Josefsson 2012
     /

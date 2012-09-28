@@ -1,6 +1,6 @@
 %h1 Listing requirements
 
-%table
+%table.table.table-striped.table-bordered
   %tr
     %th Description
     %th Rationale
@@ -17,7 +17,7 @@
 
   - @requirements.each do |requirement|
     %tr
-      %td= requirement.description
+      %td= link_to requirement.description, requirement_path(requirement)
       %td= requirement.rationale
       %td= requirement.originator
       %td= requirement.fit_criterion
@@ -32,4 +32,4 @@
 
 %br
 
-= link_to 'New Requirement', new_requirement_path
+= link_to 'New Requirement', new_requirement_path, class: "btn btn-primary"

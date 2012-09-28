@@ -1,6 +1,6 @@
 %h1 Listing requirement_types
 
-%table
+%table.table.table-striped.table-bordered
   %tr
     %th Name
     %th
@@ -10,10 +10,10 @@
   - @requirement_types.each do |requirement_type|
     %tr
       %td= requirement_type.name
-      %td= link_to 'Show', requirement_type
-      %td= link_to 'Edit', edit_requirement_type_path(requirement_type)
-      %td= link_to 'Destroy', requirement_type, :confirm => 'Are you sure?', :method => :delete
+      %td= link_to 'Show', requirement_type, class: :btn
+      %td= link_to 'Edit', edit_requirement_type_path(requirement_type), class: :btn
+      %td= link_to 'Destroy', requirement_type, :confirm => 'Are you sure?', :method => :delete, class: :btn
 
 %br
 
-= link_to 'New Requirement type', new_requirement_type_path
+= link_to 'New Requirement type', new_requirement_type_path, class: "btn btn-primary"
