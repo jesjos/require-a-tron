@@ -1,0 +1,48 @@
+%p#notice= notice
+
+%p
+  %b Tag:
+  = @p_lang_requirement.tag
+%p
+  %b Gist:
+  = @p_lang_requirement.gist
+%p
+  %b Stakeholder:
+  = @p_lang_requirement.stakeholder
+%p
+  %b Scale:
+  = @p_lang_requirement.scale
+%p
+  %b Meter:
+  = @p_lang_requirement.meter
+%p
+  %b Must:
+  = @p_lang_requirement.must
+%p
+  %b Plan:
+  = @p_lang_requirement.plan
+%p
+  %b Stretch:
+  = @p_lang_requirement.stretch
+%p
+  %b Wish:
+  = @p_lang_requirement.wish
+%p
+  %b Past:
+  = @p_lang_requirement.past
+%p
+  %b Trend:
+  = @p_lang_requirement.trend
+%p
+  %b Record:
+  = @p_lang_requirement.record
+%p
+  %b Defined:
+  = @p_lang_requirement.defined
+%p
+  %b Authority:
+  = @p_lang_requirement.authority
+
+= link_to 'Edit', edit_p_lang_requirement_path(@p_lang_requirement)
+\|
+= link_to 'Back', p_lang_requirements_path

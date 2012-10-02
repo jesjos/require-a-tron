@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  tag: MyString
+  gist: MyString
+  stakeholder: MyString
+  scale: MyString
+  meter: MyString
+  must: MyString
+  plan: MyString
+  stretch: MyString
+  wish: MyString
+  past: MyString
+  trend: MyString
+  record: MyString
+  defined: MyString
+  authority: MyString
+
+two:
+  tag: MyString
+  gist: MyString
+  stakeholder: MyString
+  scale: MyString
+  meter: MyString
+  must: MyString
+  plan: MyString
+  stretch: MyString
+  wish: MyString
+  past: MyString
+  trend: MyString
+  record: MyString
+  defined: MyString
+  authority: MyString

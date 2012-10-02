@@ -1,0 +1,52 @@
+= form_for @p_lang_requirement do |f|
+  -if @p_lang_requirement.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@p_lang_requirement.errors.count, "error")} prohibited this p_lang_requirement from being saved:"
+      %ul
+        - @p_lang_requirement.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :tag
+    = f.text_field :tag
+  .field
+    = f.label :gist
+    = f.text_field :gist
+  .field
+    = f.label :stakeholder
+    = f.text_field :stakeholder
+  .field
+    = f.label :scale
+    = f.text_field :scale
+  .field
+    = f.label :meter
+    = f.text_field :meter
+  .field
+    = f.label :must
+    = f.text_field :must
+  .field
+    = f.label :plan
+    = f.text_field :plan
+  .field
+    = f.label :stretch
+    = f.text_field :stretch
+  .field
+    = f.label :wish
+    = f.text_field :wish
+  .field
+    = f.label :past
+    = f.text_field :past
+  .field
+    = f.label :trend
+    = f.text_field :trend
+  .field
+    = f.label :record
+    = f.text_field :record
+  .field
+    = f.label :defined
+    = f.text_field :defined
+  .field
+    = f.label :authority
+    = f.text_field :authority
+  .actions
+    = f.submit 'Save'

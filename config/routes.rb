@@ -1,4 +1,6 @@
 Requirements::Application.routes.draw do
+  resources :p_lang_requirements
+
   resources :relations, only: [:create, :destroy]
 
   devise_for :users

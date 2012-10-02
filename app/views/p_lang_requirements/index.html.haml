@@ -1,0 +1,45 @@
+%h1 Listing p_lang_requirements
+
+%table
+  %tr
+    %th Tag
+    %th Gist
+    %th Stakeholder
+    %th Scale
+    %th Meter
+    %th Must
+    %th Plan
+    %th Stretch
+    %th Wish
+    %th Past
+    %th Trend
+    %th Record
+    %th Defined
+    %th Authority
+    %th
+    %th
+    %th
+
+  - @p_lang_requirements.each do |p_lang_requirement|
+    %tr
+      %td= p_lang_requirement.tag
+      %td= p_lang_requirement.gist
+      %td= p_lang_requirement.stakeholder
+      %td= p_lang_requirement.scale
+      %td= p_lang_requirement.meter
+      %td= p_lang_requirement.must
+      %td= p_lang_requirement.plan
+      %td= p_lang_requirement.stretch
+      %td= p_lang_requirement.wish
+      %td= p_lang_requirement.past
+      %td= p_lang_requirement.trend
+      %td= p_lang_requirement.record
+      %td= p_lang_requirement.defined
+      %td= p_lang_requirement.authority
+      %td= link_to 'Show', p_lang_requirement
+      %td= link_to 'Edit', edit_p_lang_requirement_path(p_lang_requirement)
+      %td= link_to 'Destroy', p_lang_requirement, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New P lang requirement', new_p_lang_requirement_path
