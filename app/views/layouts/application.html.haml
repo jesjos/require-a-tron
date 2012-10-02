@@ -29,13 +29,15 @@
             %ul.nav
               %li= link_to "Requirements", requirements_path
               %li= link_to "Requirement types", requirement_types_path
+              %li.pull-right= link_to "Sign out", destroy_user_session_path, method: :delete
 
     .container.main-content
-      .login-info= "Logged in as #{current_user.email}"
-      - if notice
-        %p.notice= notice
-      - if alert
-        %p.alert= alert
+      - if current_user
+        .login-info= "Logged in as #{current_user.email}"
+        - if notice
+          %p.notice= notice
+        - if alert
+          %p.alert= alert
       = yield
       
       %footer.well

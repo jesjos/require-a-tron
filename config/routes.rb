@@ -3,7 +3,7 @@ Requirements::Application.routes.draw do
 
   devise_for :users
 
-  root to: "home#home"
+  root to: "requirements#index"
 
   resources :requirements do
     resources :relations, only: [:index, :create, :destroy]
