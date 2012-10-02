@@ -18,6 +18,8 @@ gem 'gon'
 
 gem 'rails-backbone'
 
+gem 'simple_form'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -26,7 +28,6 @@ group :assets do
   gem 'haml-rails'
   gem 'twitter-bootstrap-rails'
   gem 'twitter_bootstrap_form_for'
-  gem 'simple_form'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   gem 'therubyracer', :platforms => :ruby
