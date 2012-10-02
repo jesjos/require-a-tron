@@ -22,6 +22,15 @@ class RequirementsController < ApplicationController
     end
   end
 
+  def edit_relations
+    @requirement = Requirement.find(params[:id])
+    gon.related = @requirement.related_requirements
+
+    respond_to do |format|
+      format.html
+    end
+  end
+
   # GET /requirements/new
   # GET /requirements/new.json
   def new
@@ -47,6 +56,11 @@ class RequirementsController < ApplicationController
 
     respond_to do |format|
       if @requirement.save
+        if params[:requirement][:related_requirement_ids]
+          params[:requirement][:related_requirement_ids].each do |id|
+            Relation.create(requirement: @requirement, related_requirement_id: @iji)
+          end
+        end
         format.html { redirect_to @requirement, notice: 'Requirement was successfully created.' }
         format.json { render json: @requirement, status: :created, location: @requirement }
       else
@@ -61,6 +75,8 @@ class RequirementsController < ApplicationController
   def update
     @requirement = Requirement.find(params[:id])
     params[:requirement][:dependency_ids] ||= []
+    params[:requirement][:related_requirement_ids] ||= []
+    params[:requirement][:conflicting_requirement_ids] ||= []
 
     respond_to do |format|
       if @requirement.update_attributes(params[:requirement])

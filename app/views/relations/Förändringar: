@@ -1,0 +1,27 @@
+Förändringar i datamodellen:
+	- Rails-konvention vad gäller created_at, update_at
+	- Expandera vissa namn: learn_obj -> lear_object
+	- Gör join-tabeller till rena join tabeller:
+		- d.v.s. inget id och inga timestamps, bara id för objekten som kopplas ihop
+		- vi behöver även ändra till pluralisformer
+		- gäller:
+			- year-subject-course -> ?
+			- learn_obj_user 			-> learn_objects_users
+			- learn_obj_policy		-> learn_objects_policies
+			- learn_obj_level			-> learn_objects_levels
+			- 
+	- Alla active-booleaner kommer att lösas med tinyint per Rails standard
+	- För hierarkier: jag föreslår att vi använder parent_id istället för t.ex. policy_id
+	- byta namn på några tabeller: 
+		- USER_SUBJECT: favorite_courses
+		- LEARNOBJ_USER: favorite_objects
+		- USER_HEADERS: collections
+		- LEARN_OBJ_USER_MATERIAL: learning_object_in_collections
+		- DOCUMENTATION_OBJECT: documented_objects
+
+	- Documentation_object löser vi med en polymorfisk rails-association, detta leder till förändringar i datamodellen.
+
+
+Övrigt:
+	- Använda Carrierwave för att ladda upp filer/bilder
+	- Kan innebära förändringar i datamodellen

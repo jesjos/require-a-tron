@@ -1,9 +1,13 @@
 Requirements::Application.routes.draw do
+  resources :relations, only: [:create, :destroy]
+
   devise_for :users
 
   root to: "home#home"
 
-  resources :requirements
+  resources :requirements do
+    resources :relations, only: [:index, :create, :destroy]
+  end
 
   resources :requirement_types
 

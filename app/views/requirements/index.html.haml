@@ -2,6 +2,7 @@
 
 %table.table.table-striped.table-bordered
   %tr
+    %th Requirement id
     %th Description
     %th Rationale
     %th Originator
@@ -9,14 +10,13 @@
     %th Customer satisfaction
     %th Customer dissatisfaction
     %th Priority
-    %th Supporting materials
-    %th History
     %th
     %th
     %th
 
   - @requirements.each do |requirement|
     %tr
+      %td= link_to requirement.identification || "No id yet", requirement_path(requirement)
       %td= link_to requirement.description, requirement_path(requirement)
       %td= requirement.rationale
       %td= requirement.originator
@@ -24,8 +24,6 @@
       %td= requirement.customer_satisfaction
       %td= requirement.customer_dissatisfaction
       %td= requirement.priority
-      %td= requirement.supporting_materials
-      %td= requirement.history
       %td= link_to 'Show', requirement
       %td= link_to 'Edit', edit_requirement_path(requirement)
       %td= link_to 'Destroy', requirement, :confirm => 'Are you sure?', :method => :delete

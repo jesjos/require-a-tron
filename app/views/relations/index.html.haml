@@ -1,0 +1,25 @@
+%h1 
+	Editing related requirements for 
+	= @requirement.identification 
+	= @requirement.description
+
+#addRequirementsDialog
+	= form_for @relation, html: {class: "form-horizontal"} do |f|
+		= f.hidden_field :requirement_id, value: @requirement.id
+		= f.select :related_requirement_id, @requirements.collect {|r| [r.description, r.id]}
+		= f.submit "Add", class: "btn"
+
+#related_requirements
+	%table.table
+		%thead
+			%tr
+				%th Identification
+				%th Description
+				%th 
+		- @relations.each do |r|
+			%tr
+				- requirement = r.get_related_requirement_for_id(@requirement.id)
+				%td= requirement.identification
+				%td= requirement.description
+				%td
+					= link_to 'X', relation_path(r), :method => :delete, class: [:btn, "btn-danger"]

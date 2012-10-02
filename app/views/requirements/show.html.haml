@@ -1,43 +1,64 @@
 %p#notice= notice
 
-%table.table.table-bordered
-  %tr
-    %td Identification:
-    %td= @requirement.identification
-  %tr
-    %td Description:
-    %td= @requirement.description
-  %tr
-    %td Rationale:
-    %td= @requirement.rationale
-  %tr
-    %td Originator:
-    %td= @requirement.originator
-  %tr
-    %td Fit criterion:
-    %td= @requirement.fit_criterion
-  %tr
-    %td Customer satisfaction:
-    %td= @requirement.customer_satisfaction
-  %tr
-    %td Customer dissatisfaction:
-    %td= @requirement.customer_dissatisfaction
-  %tr
-    %td Priority:
-    %td= @requirement.priority
-  %tr
-    %td Supporting materials:
-    %td= @requirement.supporting_materials
-  %tr
-    %td History:
-    %td= @requirement.history
-  %tr 
-    %td Dependencies
-    %td
-      - if @requirement.dependencies
-        %ul
-          - for req in @requirement.dependencies
-            %li= link_to req.description, req
+%table.table.table-hover
+  %thead
+    %tr
+      %th.tag-column
+        Tag
+      %th
+        Value
+  %tbody
+    %tr
+      %td Identification
+      %td= @requirement.identification
+    %tr
+      %td Description
+      %td= @requirement.description
+    %tr
+      %td Rationale
+      %td= @requirement.rationale
+    %tr
+      %td Originator
+      %td= @requirement.originator
+    %tr
+      %td Fit criterion
+      %td= @requirement.fit_criterion
+    %tr
+      %td Customer satisfaction:
+      %td= @requirement.customer_satisfaction
+    %tr
+      %td Customer dissatisfaction:
+      %td= @requirement.customer_dissatisfaction
+    %tr
+      %td Priority:
+      %td= @requirement.priority
+    %tr
+      %td Supporting materials:
+      %td= @requirement.supporting_materials
+    %tr
+      %td History:
+      %td= @requirement.history
+    %tr 
+      %td Dependencies
+      %td
+        - if @requirement.dependencies
+          %ul
+            - for req in @requirement.dependencies
+              %li= link_to req.description, req
+    %tr 
+      %td Related requirements
+      %td
+        - if @requirement.related_requirements
+          %ul
+            - for req in @requirement.related_requirements
+              %li= link_to req.description, req
+    %tr 
+      %td Conflicting requirements
+      %td
+        - if @requirement.conflicting_requirements
+          %ul
+            - for req in @requirement.conflicting_requirements
+              %li= link_to req.description, req
 
 
 = link_to 'Edit', edit_requirement_path(@requirement)

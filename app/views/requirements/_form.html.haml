@@ -8,6 +8,10 @@
   .row
     .span6
       .control-group
+        = f.label :identification, class: "control-label"
+        .controls
+          = f.text_field :identification
+      .control-group
         = f.label :description, class: "control-label"
         .controls
           = f.text_area :description, rows: "3"
@@ -54,6 +58,20 @@
           - for req in @requirements
             %label.checkbox
               = check_box_tag "requirement[dependency_ids][]", req.id, @requirement.dependencies.include?(req)
+              = req.description
+      .control-group
+        = f.label :conflicting_requirements, class: "control-label"
+        .controls
+          - for req in @requirements
+            %label.checkbox
+              = check_box_tag "requirement[conflicting_requirement_ids][]", req.id, @requirement.conflicting_requirements.include?(req)
+              = req.description
+      .control-group
+        = f.label :related_requirements, class: "control-label"
+        .controls
+          - for req in @requirements
+            %label.checkbox
+              = check_box_tag "requirement[related_requirement_ids][]", req.id, @requirement.related_requirements.include?(req)
               = req.description
   .control-group
     .controls

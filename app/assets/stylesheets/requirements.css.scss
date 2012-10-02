@@ -1,3 +1,13 @@
 // Place all the styles related to the Requirements controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.tag-column {
+	width: 300px;
+	font-weight: bold;
+}
+
+.show-table {
+	tbody > tr > td:first-child {
+		font-weight: bold;
+	}
+}
