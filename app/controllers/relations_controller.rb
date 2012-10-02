@@ -23,12 +23,16 @@ class RelationsController < ApplicationController
 
   def destroy
     if params[:requirement_id]
-      @requirement = Requirement_id.find(params[requirement_id])
-      @relation = @requirement.relations.where(id: params[:id])
+      @requirement = Requirement.find(params[:requirement_id])
+      @relation = @requirement.relations.where(id: params[:id]).first
     else
       @relation = Relation.find(params[:id])
     end
   	@relation.delete
-  	respond_with @relation
+    if params[:requirement_id]
+      redirect_to requirement_relations_path(params[:requirement_id])
+    else
+      redirect_to root_path
+    end
   end
 end
