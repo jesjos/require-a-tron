@@ -1,5 +1,5 @@
-%h1 
-	Editing related requirements for 
+%h2 
+	Editing related requirements for:
 	= @requirement.identification 
 	= @requirement.description
 
@@ -9,6 +9,7 @@
 		= f.select :related_requirement_id, @requirements.collect {|r| [r.description, r.id]}
 		= f.submit "Add", class: "btn"
 
+%h3 Existing relations
 .row
 	#related_requirements.span4
 		%table.table.relations_table
@@ -23,5 +24,5 @@
 					%td= requirement.identification
 					%td= requirement.description
 					%td
-						= link_to 'X', relation_path(r), :method => :delete, class: [:btn, "btn-danger"]
+						= link_to 'Remove', relation_path(r), :method => :delete, class: [:btn, "btn-danger"]
 = link_to "Back", @requirement, class: "btn top-margin"

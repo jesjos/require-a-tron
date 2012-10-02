@@ -1,8 +1,8 @@
 %h1 Editing requirement
 
 = render 'form'
-= link_to 'Edit relations', requirement_relations_path @requirement, class: "btn btn-primary"
-\|
+= link_to 'Edit relations', requirement_relations_path(@requirement), class: "btn btn-primary"
+
 = link_to 'Show', @requirement, class: "btn btn-info"
-\|
+
 = link_to 'Back', requirements_path, class: "btn btn-info"

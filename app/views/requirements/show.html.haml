@@ -48,9 +48,9 @@
     %tr 
       %td Related requirements
       %td
-        - if @requirement.related_requirements
+        - if @requirement.related
           %ul
-            - for req in @requirement.related_requirements
+            - for req in @requirement.related
               %li= link_to req.description, req
     %tr 
       %td Conflicting requirements
