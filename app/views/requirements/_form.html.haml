@@ -66,13 +66,6 @@
             %label.checkbox
               = check_box_tag "requirement[conflicting_requirement_ids][]", req.id, @requirement.conflicting_requirements.include?(req)
               = req.description
-      .control-group
-        = f.label :related_requirements, class: "control-label"
-        .controls
-          - for req in @requirements
-            %label.checkbox
-              = check_box_tag "requirement[related_requirement_ids][]", req.id, @requirement.related_requirements.include?(req)
-              = req.description
   .control-group
     .controls
       = f.submit 'Save', class: "btn btn-large btn-primary"
