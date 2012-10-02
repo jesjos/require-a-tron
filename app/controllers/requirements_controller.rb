@@ -53,6 +53,7 @@ class RequirementsController < ApplicationController
   # POST /requirements.json
   def create
     @requirement = Requirement.new(params[:requirement])
+    @requirement.author = current_user
 
     respond_to do |format|
       if @requirement.save

@@ -10,6 +10,7 @@
     %th Customer satisfaction
     %th Customer dissatisfaction
     %th Priority
+    %th Author
     %th
     %th
     %th
@@ -24,6 +25,7 @@
       %td= requirement.customer_satisfaction
       %td= requirement.customer_dissatisfaction
       %td= requirement.priority
+      %td= requirement.author.email if requirement.author
       %td= link_to 'Show', requirement
       %td= link_to 'Edit', edit_requirement_path(requirement)
       %td= link_to 'Destroy', requirement, :confirm => 'Are you sure?', :method => :delete
