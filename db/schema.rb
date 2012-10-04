@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121002133551) do
+ActiveRecord::Schema.define(:version => 20121004154552) do
 
   create_table "conflicting_requirements", :force => true do |t|
     t.integer "requirement_id",             :null => false
@@ -23,6 +23,26 @@ ActiveRecord::Schema.define(:version => 20121002133551) do
     t.integer "dependent_id",   :null => false
   end
 
+  create_table "p_lang_requirements", :force => true do |t|
+    t.text     "tag",            :limit => 255
+    t.text     "gist",           :limit => 255
+    t.text     "stakeholder",    :limit => 255
+    t.text     "scale",          :limit => 255
+    t.text     "meter",          :limit => 255
+    t.text     "must",           :limit => 255
+    t.text     "plan",           :limit => 255
+    t.text     "stretch",        :limit => 255
+    t.text     "wish",           :limit => 255
+    t.text     "past",           :limit => 255
+    t.text     "trend",          :limit => 255
+    t.text     "record",         :limit => 255
+    t.text     "defined",        :limit => 255
+    t.text     "authority",      :limit => 255
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.string   "identification"
+  end
+
   create_table "related_requirements", :force => true do |t|
     t.integer "requirement_id",         :null => false
     t.integer "related_requirement_id", :null => false
@@ -31,14 +51,17 @@ ActiveRecord::Schema.define(:version => 20121002133551) do
   create_table "relations", :force => true do |t|
     t.integer  "requirement_id"
     t.integer  "related_requirement_id"
-    t.datetime "created_at",             :null => false
-    t.datetime "updated_at",             :null => false
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
+    t.string   "requirement_type"
+    t.string   "related_requirement_type"
   end
 
   create_table "requirement_types", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "short_name"
   end
 
   create_table "requirements", :force => true do |t|
@@ -56,6 +79,7 @@ ActiveRecord::Schema.define(:version => 20121002133551) do
     t.integer  "requirement_type_id"
     t.string   "identification"
     t.integer  "author_id"
+    t.integer  "position"
   end
 
   create_table "users", :force => true do |t|
