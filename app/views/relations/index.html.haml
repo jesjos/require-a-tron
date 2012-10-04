@@ -1,12 +1,19 @@
 %h2 
 	Editing related requirements for:
-	= @requirement.identification 
-	= @requirement.description
+	= @requirement.pretty_name
 
 #addRequirementsDialog
-	= form_for @relation, html: {class: "form-horizontal"} do |f|
-		= f.hidden_field :requirement_id, value: @requirement.id
+	%h2 Add a NatLang Requirement
+	= form_for [@requirement, @relation], html: {class: "form-horizontal"} do |f|
+		= hidden_field_tag :type, :requirement
 		= f.select :related_requirement_id, @requirements.collect {|r| [r.description, r.id]}
+		= f.submit "Add", class: "btn"
+
+#addPLangRequirementDialog
+	%h2 Add a PLang Requirement
+	= form_for [@requirement, @relation], html: {class: "form-horizontal"} do |f|
+		= hidden_field_tag :type, :p_lang_requirement
+		= f.select :related_requirement_id, @p_lang_requirements.collect {|r| [r.tag, r.id]}
 		= f.submit "Add", class: "btn"
 
 %h3 Existing relations
@@ -15,14 +22,12 @@
 		%table.table.relations_table
 			%thead
 				%tr
-					%th Identification
-					%th Description
+					%th Name
 					%th 
 			- @relations.each do |r|
 				%tr
-					- requirement = r.get_related_requirement_for_id(@requirement.id)
-					%td= requirement.identification
-					%td= requirement.description
+					- requirement = r.get_related_requirement_for_requirement(@requirement)
+					%td= requirement.pretty_name
 					%td
 						= link_to 'Remove', requirement_relation_path(@requirement, r), :method => :delete, class: [:btn, "btn-danger"]
 = link_to "Back", @requirement, class: "btn top-margin"

@@ -13,7 +13,7 @@
       %td= @requirement.identification
     %tr
       %td Description
-      %td= @requirement.description
+      %td= @requirement.pretty_name
     %tr
       %td Rationale
       %td= @requirement.rationale
@@ -44,21 +44,21 @@
         - if @requirement.dependencies
           %ul
             - for req in @requirement.dependencies
-              %li= link_to req.description, req
+              %li= link_to req.pretty_name, req
     %tr 
       %td Related requirements
       %td
         - if @requirement.related
           %ul
             - for req in @requirement.related
-              %li= link_to req.description, req
+              %li= link_to req.pretty_name, req
     %tr 
       %td Conflicting requirements
       %td
         - if @requirement.conflicting_requirements
           %ul
             - for req in @requirement.conflicting_requirements
-              %li= link_to req.description, req
+              %li= link_to req.pretty_name, req
 
 = link_to 'Edit relations', requirement_relations_path(@requirement), class: "btn btn-primary"
 = link_to 'Edit other', edit_requirement_path(@requirement), class: "btn btn-info"

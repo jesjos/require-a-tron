@@ -5,48 +5,50 @@
       %ul
         - @p_lang_requirement.errors.full_messages.each do |msg|
           %li= msg
-
-  .field
-    = f.label :tag
-    = f.text_field :tag
-  .field
-    = f.label :gist
-    = f.text_field :gist
-  .field
-    = f.label :stakeholder
-    = f.text_field :stakeholder
-  .field
-    = f.label :scale
-    = f.text_field :scale
-  .field
-    = f.label :meter
-    = f.text_field :meter
-  .field
-    = f.label :must
-    = f.text_field :must
-  .field
-    = f.label :plan
-    = f.text_field :plan
-  .field
-    = f.label :stretch
-    = f.text_field :stretch
-  .field
-    = f.label :wish
-    = f.text_field :wish
-  .field
-    = f.label :past
-    = f.text_field :past
-  .field
-    = f.label :trend
-    = f.text_field :trend
-  .field
-    = f.label :record
-    = f.text_field :record
-  .field
-    = f.label :defined
-    = f.text_field :defined
-  .field
-    = f.label :authority
-    = f.text_field :authority
+  .row
+    .span3
+      .field
+        = f.label :tag
+        = f.text_field :tag
+      .field
+        = f.label :gist
+        = f.text_area :gist, rows: "3"
+      .field
+        = f.label :stakeholder
+        = f.text_area :stakeholder, rows: "3"
+      .field
+        = f.label :scale
+        = f.text_area :scale, rows: "3"
+      .field
+        = f.label :meter
+        = f.text_area :meter, rows: "3"
+      .field
+        = f.label :must
+        = f.text_area :must, rows: "3"
+      .field
+        = f.label :plan
+        = f.text_area :plan, rows: "3"
+      .field
+        = f.label :stretch
+        = f.text_area :stretch, rows: "3"
+    .span3
+      .field
+        = f.label :wish
+        = f.text_area :wish, rows: "3"
+      .field
+        = f.label :past
+        = f.text_area :past, rows: "3"
+      .field
+        = f.label :trend
+        = f.text_area :trend, rows: "3"
+      .field
+        = f.label :record
+        = f.text_area :record, rows: "3"
+      .field
+        = f.label :defined
+        = f.text_area :defined, rows: "3"
+      .field
+        = f.label :authority
+        = f.text_area :authority, rows: "3"
   .actions
     = f.submit 'Save'

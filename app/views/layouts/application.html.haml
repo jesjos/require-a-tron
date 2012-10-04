@@ -27,8 +27,9 @@
           = link_to "Require-a-tron", root_path, class: "brand"
           .container.nav-collapse
             %ul.nav
-              %li= link_to "Requirements", requirements_path
-              %li= link_to "Requirement types", requirement_types_path
+              %li= link_to "NatLang Requirements", requirements_path
+              %li= link_to "NatLang Requirement types", requirement_types_path
+              %li= link_to "PLang Requirements", p_lang_requirements_path
               %li.pull-right= link_to "Sign out", destroy_user_session_path, method: :delete
 
     .container.main-content
