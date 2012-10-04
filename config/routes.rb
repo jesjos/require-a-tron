@@ -1,5 +1,7 @@
 Requirements::Application.routes.draw do
-  resources :p_lang_requirements
+  resources :p_lang_requirements do
+    resources :relations, only: [:index, :create, :destroy]
+  end
 
   resources :relations, only: [:create, :destroy]
 
