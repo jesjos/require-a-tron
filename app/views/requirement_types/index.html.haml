@@ -2,6 +2,7 @@
 
 %table.table.table-striped.table-bordered
   %tr
+    %th Short name
     %th Type
     %th
     %th
@@ -9,6 +10,7 @@
 
   - @requirement_types.each do |requirement_type|
     %tr
+      %td= requirement_type.short_name
       %td= requirement_type.name
       %td= link_to 'Show', requirement_type, class: :btn
       %td= link_to 'Edit', edit_requirement_type_path(requirement_type), class: :btn

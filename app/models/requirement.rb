@@ -30,6 +30,6 @@ class Requirement < ActiveRecord::Base
   end
 
   def iden
-  	"#{self.requirement_type.short_name}#{number}"
+  	"#{self.requirement_type.short_name}#{self.position}"
   end
 end
