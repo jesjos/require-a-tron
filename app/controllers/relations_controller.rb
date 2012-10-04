@@ -3,7 +3,13 @@ class RelationsController < ApplicationController
   def create
     if params[:requirement_id]
       @requirement = Requirement.find(params[:requirement_id])
-      @relation = Relation.create(requirement: @requirement, relation: params[:related_requirement])
+      related_id = params[:relation][:related_requirement_id]
+      if params[:type] == "requirement"
+        @related_requirement = Requirement.find(related_id)
+      else
+        @related_requirement = PLangRequirement.find(related_id)
+      end
+      @relation = Relation.create(requirement: @requirement, related_requirement: @related_requirement)
     else 
       @requirement = params[:relation][:requirement_id]
       @relation = Relation.create(params[:relation])
@@ -12,13 +18,16 @@ class RelationsController < ApplicationController
   end
 
   def index 
-    @requirement = Requirement.find(params[:requirement_id])
-    gon.requirement_id = @requirement.id
-    gon.related = @requirement.related_requirements
-    @requirements = Requirement.where("id not in (?)", @requirement.related.collect {|r| r.id}.push(@requirement.id))
+    if params[:requirement_id]
+      @requirement = Requirement.find(params[:requirement_id])
+    elsif params[:p_lang_requirement_id]
+      @requirement = PLangRequirement.find(params[:p_lang_requirement_id])
+    end
+    @requirements = Requirement.all
+    @p_lang_requirements = PLangRequirement.all
     @relations = @requirement.relations
     @relation = Relation.new
-    respond_with @requirement.related_requirements
+    respond_with @requirement.related
   end
 
   def destroy
