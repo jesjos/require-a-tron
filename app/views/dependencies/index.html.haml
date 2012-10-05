@@ -1,0 +1,34 @@
+%h2 
+	Editing dependent requirements for:
+	= @requirement.pretty_name
+
+#addRequirementsDialog
+	%h2 Add a NatLang Requirement
+	= form_for [@requirement, @dependency], html: {class: "form-horizontal"} do |f|
+		= hidden_field_tag :type, :requirement
+		= f.select :dependent_requirement_id, @requirements.collect {|r| [r.description, r.id]}
+		= f.submit "Add", class: "btn"
+
+#addPLangRequirementDialog
+	%h2 Add a PLang Requirement
+	= form_for [@requirement, @dependency], html: {class: "form-horizontal"} do |f|
+		= hidden_field_tag :type, :p_lang_requirement
+		= f.select :dependent_requirement_id, @p_lang_requirements.collect {|r| [r.tag, r.id]}
+		= f.submit "Add", class: "btn"
+
+%h3 Existing dependencies
+.row
+	#related_requirements.span4
+		%table.table.dependencies_table
+			%thead
+				%tr
+					%th Name
+					%th 
+			- @dependencies.each do |r|
+				%tr
+					- requirement = r.get_dependent_requirement_for_requirement(@requirement)
+					%td= requirement.pretty_name
+					%td
+						- path = @requirement.is_a?(Requirement) ? requirement_dependency_path(@requirement, r) : p_lang_requirement_dependency_path(@requirement, r)
+						= link_to 'Remove', path, :method => :delete, class: [:btn, "btn-danger"]
+= link_to "Back", @requirement, class: "btn top-margin"

@@ -1,8 +1,10 @@
 Requirements::Application.routes.draw do
 
   resources :conflicts, only: [:index, :create, :destroy]
+  resources :dependencies, only: [:index, :create, :destroy]
 
   resources :p_lang_requirements do
+    resources :dependencies, only: [:index, :create, :destroy]
     resources :relations, only: [:index, :create, :destroy]
     resources :conflicts, only: [:index, :create, :destroy]
   end
@@ -14,6 +16,7 @@ Requirements::Application.routes.draw do
   root to: "requirements#index"
 
   resources :requirements do
+    resources :dependencies, only: [:index, :create, :destroy]
     resources :relations, only: [:index, :create, :destroy]
     resources :conflicts, only: [:index, :create, :destroy]
   end

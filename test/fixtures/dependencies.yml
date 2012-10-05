@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  requirement_id: 1
+  dependent_requirement_id: 1
+  requirement_type: MyString
+  dependent_requirement_type: MyString
+
+two:
+  requirement_id: 1
+  dependent_requirement_id: 1
+  requirement_type: MyString
+  dependent_requirement_type: MyString

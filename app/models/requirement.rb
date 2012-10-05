@@ -15,6 +15,8 @@ class Requirement < ActiveRecord::Base
   has_many :primary_conflicts, as: :requirement, class_name: "Conflict"
   has_many :secondary_conflicts, as: :conflicting_requirement, class_name: "Conflict"
 
+  has_many :dependencies, as: :requirement, class_name: "Dependency"
+
   def relations
   	self.primary_relations + self.secondary_relations
   end
