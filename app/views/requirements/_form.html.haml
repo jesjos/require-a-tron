@@ -47,21 +47,7 @@
       .control-group
         = f.label :requirement_type, class: "control-label"
         .controls= f.select :requirement_type_id, @requirement_types
-
-      .control-group
-        = f.label :dependencies, class: "control-label"
-        .controls
-          - for req in @requirements
-            %label.checkbox
-              = check_box_tag "requirement[dependency_ids][]", req.id, @requirement.dependencies.include?(req)
-              = req.description
-      .control-group
-        = f.label :conflicting_requirements, class: "control-label"
-        .controls
-          - for req in @requirements
-            %label.checkbox
-              = check_box_tag "requirement[conflicting_requirement_ids][]", req.id, @requirement.conflicting_requirements.include?(req)
-              = req.description
+        
   .control-group
     .controls
       = f.submit 'Save', class: "btn btn-large btn-primary"
