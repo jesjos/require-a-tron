@@ -2,7 +2,7 @@ class Requirement < ActiveRecord::Base
   attr_accessible :customer_dissatisfaction, :customer_satisfaction, :description, :requirement_type_id, :identification, :conflicting_requirement_ids
   attr_accessible :fit_criterion, :history, :originator, :priority, :rationale, :supporting_materials, :dependency_ids, :related_requirement_ids
   validates_presence_of :requirement_type
-  acts_as_list
+  acts_as_list scope: :requirement_type
 
   belongs_to :requirement_type
   has_and_belongs_to_many :dependencies, class_name: "Requirement", association_foreign_key: :dependent_id, join_table: "dependencies"
@@ -22,14 +22,10 @@ class Requirement < ActiveRecord::Base
   end
 
   def pretty_name
-  	if self.identification
-  		"#{self.identification} - #{self.description}"
-  	else
-  		"#{self.description}"
-  	end
+  	"#{self.identification} - #{self.description}"
   end
 
-  def iden
+  def identification
   	"#{self.requirement_type.short_name}#{self.position}"
   end
 end
