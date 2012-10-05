@@ -6,12 +6,14 @@ class Requirement < ActiveRecord::Base
 
   belongs_to :requirement_type
   has_and_belongs_to_many :dependencies, class_name: "Requirement", association_foreign_key: :dependent_id, join_table: "dependencies"
-  has_and_belongs_to_many :related_requirements, class_name: "Requirement", association_foreign_key: :related_requirement_id, join_table: "related_requirements"
-  has_and_belongs_to_many :conflicting_requirements, class_name: "Requirement", association_foreign_key: :conflicting_requirement_id, join_table: "conflicting_requirements"
+
   belongs_to :author, class_name: "User"
 
   has_many :primary_relations, as: :requirement, class_name: "Relation"
   has_many :secondary_relations, as: :related_requirement, class_name: "Relation"
+
+  has_many :primary_conflicts, as: :requirement, class_name: "Conflict"
+  has_many :secondary_conflicts, as: :conflicting_requirement, class_name: "Conflict"
 
   def relations
   	self.primary_relations + self.secondary_relations
@@ -19,6 +21,14 @@ class Requirement < ActiveRecord::Base
 
   def related
   	self.relations.collect {|r| r.requirement == self ? r.related_requirement : r.requirement}
+  end
+
+   def conflicts
+  	self.primary_conflicts + self.secondary_conflicts
+  end
+
+  def conflicting_requirements
+  	self.conflicts.collect {|r| r.requirement == self ? r.conflicting_requirement : r.requirement}
   end
 
   def pretty_name

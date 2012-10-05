@@ -61,6 +61,7 @@
             - for req in @p_lang_requirement.related
               %li= link_to req.pretty_name, req
 
-=link_to "Edit relations", p_lang_requirement_relations_path(@p_lang_requirement), class: "btn btn-primary"
+=link_to "Edit relations", p_lang_requirement_relations_path(@p_lang_requirement), class: "btn btn-danger"
+=link_to "Edit conflicts", p_lang_requirement_conflicts_path(@p_lang_requirement), class: "btn btn-primary"
 = link_to 'Edit other', edit_p_lang_requirement_path(@p_lang_requirement), class: "btn btn-info"
 = link_to 'Back', p_lang_requirements_path, class: "btn"

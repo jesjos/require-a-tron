@@ -60,6 +60,7 @@
             - for req in @requirement.conflicting_requirements
               %li= link_to req.pretty_name, req
 
+= link_to "Edit conflicts", requirement_conflicts_path(@requirement), class: "btn btn-danger"
 = link_to 'Edit relations', requirement_relations_path(@requirement), class: "btn btn-primary"
 = link_to 'Edit other', edit_requirement_path(@requirement), class: "btn btn-info"
 = link_to 'Back', requirements_path, class: "btn"
