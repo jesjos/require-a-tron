@@ -1,48 +1,66 @@
 %p#notice= notice
 
-%p
-  %b Tag:
-  = @p_lang_requirement.tag
-%p
-  %b Gist:
-  = @p_lang_requirement.gist
-%p
-  %b Stakeholder:
-  = @p_lang_requirement.stakeholder
-%p
-  %b Scale:
-  = @p_lang_requirement.scale
-%p
-  %b Meter:
-  = @p_lang_requirement.meter
-%p
-  %b Must:
-  = @p_lang_requirement.must
-%p
-  %b Plan:
-  = @p_lang_requirement.plan
-%p
-  %b Stretch:
-  = @p_lang_requirement.stretch
-%p
-  %b Wish:
-  = @p_lang_requirement.wish
-%p
-  %b Past:
-  = @p_lang_requirement.past
-%p
-  %b Trend:
-  = @p_lang_requirement.trend
-%p
-  %b Record:
-  = @p_lang_requirement.record
-%p
-  %b Defined:
-  = @p_lang_requirement.defined
-%p
-  %b Authority:
-  = @p_lang_requirement.authority
+%h1
+  = @p_lang_requirement.identification
 
-= link_to 'Edit', edit_p_lang_requirement_path(@p_lang_requirement)
-\|
-= link_to 'Back', p_lang_requirements_path
+%table.table.table-hover
+  %thead
+    %tr
+      %th.tag-column
+        Tag
+      %th
+        Value
+  %tbody
+    %tr
+      %td Tag
+      %td= @p_lang_requirement.tag
+    %tr
+      %td Gist
+      %td= @p_lang_requirement.gist
+    %tr
+      %td Stakeholder
+      %td= @p_lang_requirement.stakeholder
+    %tr
+      %td Scale
+      %td= @p_lang_requirement.scale
+    %tr
+      %td Meter
+      %td= @p_lang_requirement.meter
+    %tr
+      %td Must
+      %td= @p_lang_requirement.must
+    %tr
+      %td Plan
+      %td= @p_lang_requirement.plan
+    %tr
+      %td Stretch
+      %td= @p_lang_requirement.stretch
+    %tr
+      %td Wish
+      %td= @p_lang_requirement.wish
+    %tr
+      %td Past
+      %td= @p_lang_requirement.past
+    %tr
+      %td Trend
+      %td= @p_lang_requirement.trend
+    %tr
+      %td Record
+      %td= @p_lang_requirement.record
+    %tr
+      %td Defined
+      %td= @p_lang_requirement.defined
+    %tr
+      %td Authority
+      %td= @p_lang_requirement.authority
+    %tr 
+      %td Related requirements
+      %td
+        - if @p_lang_requirement.related
+          %ul
+            - for req in @p_lang_requirement.related
+              %li= link_to req.pretty_name, req
+
+=link_to "Edit relations", p_lang_requirement_relations_path(@p_lang_requirement), class: "btn btn-primary"
+= link_to 'Edit other', edit_p_lang_requirement_path(@p_lang_requirement), class: "btn btn-info"
+= link_to 'Back', p_lang_requirements_path, class: "btn"

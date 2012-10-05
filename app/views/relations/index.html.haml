@@ -29,5 +29,6 @@
 					- requirement = r.get_related_requirement_for_requirement(@requirement)
 					%td= requirement.pretty_name
 					%td
-						= link_to 'Remove', requirement_relation_path(@requirement, r), :method => :delete, class: [:btn, "btn-danger"]
+						- path = @requirement.is_a?(Requirement) ? requirement_relation_path(@requirement, r) : p_lang_requirement_relation_path(@requirement, r)
+						= link_to 'Remove', path, :method => :delete, class: [:btn, "btn-danger"]
 = link_to "Back", @requirement, class: "btn top-margin"

@@ -1,7 +1,8 @@
 %h1 Listing PLang Requirements
 
-%table.table.table-striped.table-bordered
+%table.table.table-striped.table-bordered.clickableRows
   %tr
+    %th Identification
     %th Tag
     %th Gist
     %th Stakeholder
@@ -21,7 +22,8 @@
     %th
 
   - @p_lang_requirements.each do |p_lang_requirement|
-    %tr
+    %tr{data: {url: p_lang_requirement_path(p_lang_requirement)}}
+      %td= p_lang_requirement.identification
       %td= p_lang_requirement.tag
       %td= p_lang_requirement.gist
       %td= p_lang_requirement.stakeholder

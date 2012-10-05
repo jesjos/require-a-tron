@@ -1,6 +1,6 @@
 %h1 Listing requirements
 
-%table.table.table-striped.table-bordered
+%table.table.table-striped.table-bordered.clickableRows
   %tr
     %th Requirement id
     %th Description
@@ -16,8 +16,8 @@
     %th
 
   - @requirements.each do |requirement|
-    %tr
-      %td= link_to requirement.iden || "No id yet", requirement_path(requirement)
+    %tr{data: {url: requirement_path(requirement)}}
+      %td= link_to requirement.identification || "No id yet", requirement_path(requirement)
       %td= link_to requirement.description, requirement_path(requirement)
       %td= requirement.rationale
       %td= requirement.originator
