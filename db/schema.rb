@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121005174810) do
+ActiveRecord::Schema.define(:version => 20121005195344) do
 
   create_table "conflicting_requirements", :force => true do |t|
     t.integer "requirement_id",             :null => false
@@ -28,8 +28,12 @@ ActiveRecord::Schema.define(:version => 20121005174810) do
   end
 
   create_table "dependencies", :force => true do |t|
-    t.integer "requirement_id", :null => false
-    t.integer "dependent_id",   :null => false
+    t.integer  "requirement_id"
+    t.integer  "dependent_requirement_id"
+    t.string   "requirement_type"
+    t.string   "dependent_requirement_type"
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
   end
 
   create_table "p_lang_requirements", :force => true do |t|

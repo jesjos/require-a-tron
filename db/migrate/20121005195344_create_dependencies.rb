@@ -1,5 +1,6 @@
 class CreateDependencies < ActiveRecord::Migration
   def change
+  	drop_table :dependencies
     create_table :dependencies do |t|
       t.integer :requirement_id
       t.integer :dependent_requirement_id

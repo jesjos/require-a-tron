@@ -3,18 +3,17 @@ class RelationsController < ApplicationController
   def create
     if params[:requirement_id]
       @requirement = Requirement.find(params[:requirement_id])
-      related_id = params[:relation][:related_requirement_id]
-      if params[:type] == "requirement"
-        @related_requirement = Requirement.find(related_id)
-      else
-        @related_requirement = PLangRequirement.find(related_id)
-      end
-      @relation = Relation.create(requirement: @requirement, related_requirement: @related_requirement)
     else 
-      @requirement = params[:relation][:requirement_id]
-      @relation = Relation.create(params[:relation])
+      @requirement = PLangRequirement.find(params[:p_lang_requirement_id])
     end
-  	redirect_to requirement_relations_path(@requirement)
+    related_id = params[:relation][:related_requirement_id]
+    if params[:type] == "requirement"
+      @related_requirement = Requirement.find(related_id)
+    else
+      @related_requirement = PLangRequirement.find(related_id)
+    end
+    @relation = Relation.create(requirement: @requirement, related_requirement: @related_requirement)
+  	redirect_to params[:requirement_id] ? requirement_relations_path(@requirement) : p_lang_requirement_relations_path(@requirement)
   end
 
   def index 

@@ -3,18 +3,17 @@ class ConflictsController < ApplicationController
   def create
     if params[:requirement_id]
       @requirement = Requirement.find(params[:requirement_id])
-      related_id = params[:conflict][:conflicting_requirement_id]
-      if params[:type] == "requirement"
-        @conflicting_requirement = Requirement.find(related_id)
-      else
-        @conflicting_requirement = PLangRequirement.find(related_id)
-      end
-      @conflict= Conflict.create(requirement: @requirement, conflicting_requirement: @conflicting_requirement)
-    else 
-      @requirement = params[:conflict][:requirement_id]
-      @conflict= Conflict.create(params[:conflict])
+    else
+    	@requirement = PLangRequirement.find(params[:p_lang_requirement_id])
     end
-  	redirect_to requirement_conflicts_path(@requirement)
+    related_id = params[:conflict][:conflicting_requirement_id]
+    if params[:type] == "requirement"
+      @conflicting_requirement = Requirement.find(related_id)
+    else
+      @conflicting_requirement = PLangRequirement.find(related_id)
+    end
+    @conflict= Conflict.create(requirement: @requirement, conflicting_requirement: @conflicting_requirement)
+  	redirect_to params[:requirement_id] ? requirement_conflicts_path(@requirement) : p_lang_requirements_conflicts_path(@requirement)
   end
 
   def index 
@@ -27,7 +26,7 @@ class ConflictsController < ApplicationController
     @p_lang_requirements = PLangRequirement.all
     @conflicts = @requirement.conflicts
     @conflict= Conflict.new
-    respond_with @requirement.related
+    respond_with @requirement.conflicts
   end
 
   def destroy
