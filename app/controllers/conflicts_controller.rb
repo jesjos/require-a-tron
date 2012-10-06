@@ -22,8 +22,15 @@ class ConflictsController < ApplicationController
     elsif params[:p_lang_requirement_id]
       @requirement = PLangRequirement.find(params[:p_lang_requirement_id])
     end
-    @requirements = Requirement.all
-    @p_lang_requirements = PLangRequirement.all
+    existing_requirement_ids = @requirement.conflicting_requirements.select{|r| r.is_a? Requirement}.collect {|r| r.id}
+    existing_p_lang_requirement_ids = @requirement.conflicting_requirements.select{|r| r.is_a? PLangRequirement}.collect {|r| r.id}
+    if @requirement.is_a? Requirement
+    	existing_requirement_ids.push(@requirement.id)
+    else
+    	existing_p_lang_requirement_ids.push(@requirement.id)
+    end
+    @requirements = Requirement.where("id not in (?)", existing_requirement_ids)
+    @p_lang_requirements = PLangRequirement.where("id not in (?)", existing_p_lang_requirement_ids)
     @conflicts = @requirement.conflicts
     @conflict= Conflict.new
     respond_with @requirement.conflicts

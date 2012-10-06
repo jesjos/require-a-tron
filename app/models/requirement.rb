@@ -5,15 +5,14 @@ class Requirement < ActiveRecord::Base
   acts_as_list scope: :requirement_type
 
   belongs_to :requirement_type
-  has_and_belongs_to_many :dependencies, class_name: "Requirement", association_foreign_key: :dependent_id, join_table: "dependencies"
 
   belongs_to :author, class_name: "User"
 
-  has_many :primary_relations, as: :requirement, class_name: "Relation"
-  has_many :secondary_relations, as: :related_requirement, class_name: "Relation"
+  has_many :primary_relations, as: :requirement, class_name: "Relation", dependent: :destroy
+  has_many :secondary_relations, as: :related_requirement, class_name: "Relation", dependent: :destroy
 
-  has_many :primary_conflicts, as: :requirement, class_name: "Conflict"
-  has_many :secondary_conflicts, as: :conflicting_requirement, class_name: "Conflict"
+  has_many :primary_conflicts, as: :requirement, class_name: "Conflict", dependent: :destroy
+  has_many :secondary_conflicts, as: :conflicting_requirement, class_name: "Conflict", dependent: :destroy
 
   has_many :dependencies, as: :requirement, class_name: "Dependency"
 
