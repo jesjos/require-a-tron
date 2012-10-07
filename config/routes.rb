@@ -1,5 +1,7 @@
 Requirements::Application.routes.draw do
 
+  resources :categories
+
   resources :conflicts, only: [:index, :create, :destroy]
   resources :dependencies, only: [:index, :create, :destroy]
 

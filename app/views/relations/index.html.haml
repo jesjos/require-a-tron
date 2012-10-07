@@ -6,14 +6,14 @@
 	%h2 Add a NatLang Requirement
 	= form_for [@requirement, @relation], html: {class: "form-horizontal"} do |f|
 		= hidden_field_tag :type, :requirement
-		= f.select :related_requirement_id, @requirements.collect {|r| [r.description, r.id]}
+		= f.select :related_requirement_id, @requirements.collect {|r| ["#r.identification #{r.short_name}", r.id]}
 		= f.submit "Add", class: "btn"
 
 #addPLangRequirementDialog
 	%h2 Add a PLang Requirement
 	= form_for [@requirement, @relation], html: {class: "form-horizontal"} do |f|
 		= hidden_field_tag :type, :p_lang_requirement
-		= f.select :related_requirement_id, @p_lang_requirements.collect {|r| [r.tag, r.id]}
+		= f.select :related_requirement_id, @p_lang_requirements.collect {|r| ["#{r.identification} #{r.tag}", r.id]}
 		= f.submit "Add", class: "btn"
 
 %h3 Existing relations
