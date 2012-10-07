@@ -1,6 +1,6 @@
 class Requirement < ActiveRecord::Base
   attr_accessible :customer_dissatisfaction, :customer_satisfaction, :description, :requirement_type_id, :identification, :conflicting_requirement_ids
-  attr_accessible :fit_criterion, :history, :originator, :priority, :rationale, :supporting_materials, :dependency_ids, :related_requirement_ids
+  attr_accessible :fit_criterion, :history, :originator, :priority, :rationale, :supporting_materials, :dependency_ids, :related_requirement_ids, :short_name
   validates_presence_of :requirement_type
   acts_as_list scope: :requirement_type
 
