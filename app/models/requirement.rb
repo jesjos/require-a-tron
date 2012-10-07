@@ -33,7 +33,7 @@ class Requirement < ActiveRecord::Base
   end
 
   def pretty_name
-  	"#{self.identification} - #{self.description}"
+  	"#{self.identification} - #{self.short_name}"
   end
 
   def identification
