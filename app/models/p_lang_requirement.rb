@@ -2,6 +2,8 @@ class PLangRequirement < ActiveRecord::Base
   attr_accessible :authority, :defined, :gist, :meter, :must, :past, :plan, :record, :scale, :stakeholder, :stretch, :tag, :trend, :wish
   acts_as_list
 
+  default_scope order: "position ASC"
+
   has_many :primary_relations, as: :requirement, class_name: "Relation", dependent: :destroy
   has_many :secondary_relations, as: :related_requirement, class_name: "Relation", dependent: :destroy
 

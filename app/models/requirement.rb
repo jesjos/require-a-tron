@@ -4,6 +4,8 @@ class Requirement < ActiveRecord::Base
   validates_presence_of :requirement_type
   acts_as_list scope: :requirement_type
 
+  default_scope order: "position ASC"
+
   belongs_to :requirement_type
 
   belongs_to :author, class_name: "User"
