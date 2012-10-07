@@ -75,10 +75,6 @@ class RequirementsController < ApplicationController
   # PUT /requirements/1.json
   def update
     @requirement = Requirement.find(params[:id])
-    params[:requirement][:dependency_ids] ||= []
-    params[:requirement][:related_requirement_ids] ||= []
-    params[:requirement][:conflicting_requirement_ids] ||= []
-
     respond_to do |format|
       if @requirement.update_attributes(params[:requirement])
         format.html { redirect_to @requirement, notice: 'Requirement was successfully updated.' }
