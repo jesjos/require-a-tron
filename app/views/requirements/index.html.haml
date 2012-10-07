@@ -3,6 +3,7 @@
 %table.table.table-striped.table-bordered.clickableRows
   %tr
     %th Requirement id
+    %th Short name
     %th Description
     %th Rationale
     / %th Originator
@@ -16,6 +17,7 @@
   - @requirements.each do |requirement|
     %tr{data: {url: requirement_path(requirement)}}
       %td= requirement.identification
+      %td= requirement.short_name
       %td= requirement.description
       %td= requirement.rationale
       / %td= requirement.originator

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121005195344) do
+ActiveRecord::Schema.define(:version => 20121007191926) do
 
   create_table "conflicting_requirements", :force => true do |t|
     t.integer "requirement_id",             :null => false
@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(:version => 20121005195344) do
     t.datetime "updated_at",                    :null => false
     t.string   "identification"
     t.integer  "position"
+    t.string   "short_name"
   end
 
   create_table "related_requirements", :force => true do |t|
@@ -94,6 +95,7 @@ ActiveRecord::Schema.define(:version => 20121005195344) do
     t.string   "identification"
     t.integer  "author_id"
     t.integer  "position"
+    t.string   "short_name"
   end
 
   create_table "users", :force => true do |t|

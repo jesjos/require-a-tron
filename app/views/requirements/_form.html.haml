@@ -8,6 +8,10 @@
   .row
     .span6
       .control-group
+        = f.label :short_name, class: "control-label"
+        .controls
+          = f.text_field :short_name
+      .control-group
         = f.label :description, class: "control-label"
         .controls
           = f.text_area :description, rows: "3"
