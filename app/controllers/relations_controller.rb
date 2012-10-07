@@ -22,8 +22,8 @@ class RelationsController < ApplicationController
     elsif params[:p_lang_requirement_id]
       @requirement = PLangRequirement.find(params[:p_lang_requirement_id])
     end
-    existing_requirement_ids = @requirement.related_requirements.select{|r| r.is_a? Requirement}.collect {|r| r.id}
-    existing_p_lang_requirement_ids = @requirement.related_requirements.select{|r| r.is_a? PLangRequirement}.collect {|r| r.id}
+    existing_requirement_ids = @requirement.related.select{|r| r.is_a? Requirement}.collect {|r| r.id}
+    existing_p_lang_requirement_ids = @requirement.related.select{|r| r.is_a? PLangRequirement}.collect {|r| r.id}
 
     if @requirement.is_a? Requirement
       existing_requirement_ids.push(@requirement.id)
