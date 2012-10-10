@@ -41,6 +41,7 @@ class PLangRequirementsController < ApplicationController
   # POST /p_lang_requirements.json
   def create
     @p_lang_requirement = PLangRequirement.new(params[:p_lang_requirement])
+    @p_lang_requirement.author = current_user
 
     respond_to do |format|
       if @p_lang_requirement.save

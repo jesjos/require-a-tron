@@ -10,7 +10,12 @@ class PLangRequirement < ActiveRecord::Base
   has_many :primary_conflicts, as: :requirement, class_name: "Conflict", dependent: :destroy
   has_many :secondary_conflicts, as: :conflicting_requirement, class_name: "Conflict", dependent: :destroy
 
-	has_many :dependencies, as: :requirement, class_name: "Dependency"
+	# has_many :dependencies, as: :requirement, class_name: "Dependency"
+  belongs_to :dependency, polymorphic: true
+  has_many :dependent_requirements, as: :dependency, class_name: "Requirement"
+  has_many :dependent_p_lang_requirements, as: :dependency, class_name: "PLangRequirement"
+
+  belongs_to :author, class_name: "User", foreign_key: "author_id"
 
   def relations
   	self.primary_relations + self.secondary_relations

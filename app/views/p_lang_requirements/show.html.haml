@@ -12,6 +12,10 @@
         Value
   %tbody
     %tr
+      %td
+        Author
+      %td= @p_lang_requirement.author.email if @p_lang_requirement.author
+    %tr
       %td Tag
       %td= @p_lang_requirement.tag
     %tr

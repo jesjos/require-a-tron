@@ -11,7 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121007191926) do
+ActiveRecord::Schema.define(:version => 20121010162727) do
+
+  create_table "categories", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "conflicting_requirements", :force => true do |t|
     t.integer "requirement_id",             :null => false
@@ -37,25 +44,28 @@ ActiveRecord::Schema.define(:version => 20121007191926) do
   end
 
   create_table "p_lang_requirements", :force => true do |t|
-    t.text     "tag",            :limit => 255
-    t.text     "gist",           :limit => 255
-    t.text     "stakeholder",    :limit => 255
-    t.text     "scale",          :limit => 255
-    t.text     "meter",          :limit => 255
-    t.text     "must",           :limit => 255
-    t.text     "plan",           :limit => 255
-    t.text     "stretch",        :limit => 255
-    t.text     "wish",           :limit => 255
-    t.text     "past",           :limit => 255
-    t.text     "trend",          :limit => 255
-    t.text     "record",         :limit => 255
-    t.text     "defined",        :limit => 255
-    t.text     "authority",      :limit => 255
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
+    t.text     "tag",             :limit => 255
+    t.text     "gist",            :limit => 255
+    t.text     "stakeholder",     :limit => 255
+    t.text     "scale",           :limit => 255
+    t.text     "meter",           :limit => 255
+    t.text     "must",            :limit => 255
+    t.text     "plan",            :limit => 255
+    t.text     "stretch",         :limit => 255
+    t.text     "wish",            :limit => 255
+    t.text     "past",            :limit => 255
+    t.text     "trend",           :limit => 255
+    t.text     "record",          :limit => 255
+    t.text     "defined",         :limit => 255
+    t.text     "authority",       :limit => 255
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
     t.string   "identification"
     t.integer  "position"
     t.string   "short_name"
+    t.integer  "dependency_id"
+    t.string   "dependency_type"
+    t.integer  "author_id"
   end
 
   create_table "related_requirements", :force => true do |t|
@@ -96,6 +106,8 @@ ActiveRecord::Schema.define(:version => 20121007191926) do
     t.integer  "author_id"
     t.integer  "position"
     t.string   "short_name"
+    t.integer  "dependency_id"
+    t.string   "dependency_type"
   end
 
   create_table "users", :force => true do |t|
