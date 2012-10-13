@@ -61,5 +61,7 @@ module Requirements
 
     # For devise
     config.assets.initialize_on_precompile = false
+
+    config.autoload_paths += %W(#{config.root}/lib)
   end
 end

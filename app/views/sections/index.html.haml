@@ -1,0 +1,5 @@
+%h1 Listing Sections
+
+%ul
+- @sections.each do |s|
+	%li= link_to s.name, s

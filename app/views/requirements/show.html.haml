@@ -1,4 +1,4 @@
-%p#notice= notice
+%h2= "#{@requirement.pretty_name} in section: #{@requirement.section ? @requirement.section.name : "None"}" 
 
 %table.table.table-hover
   %thead
@@ -44,10 +44,8 @@
     %tr 
       %td Dependencies
       %td
-        - if @requirement.dependencies
-          %ul
-            - for req in @requirement.dependencies
-              %li= link_to req.pretty_name, req
+        - if @requirement.dependency
+          = link_to @requirement.dependency.pretty_name, @requirement.dependency
     %tr 
       %td Related requirements
       %td

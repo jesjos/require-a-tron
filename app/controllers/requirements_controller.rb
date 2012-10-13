@@ -47,6 +47,7 @@ class RequirementsController < ApplicationController
   # GET /requirements/1/edit
   def edit
     @requirement = Requirement.find(params[:id])
+    @requirements = Requirement.all.collect {|r| [r.pretty_name, r.id]}
   end
 
   # POST /requirements

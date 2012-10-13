@@ -1,0 +1,31 @@
+%h1 
+  Section
+  = @section.name
+%p Click a requirement to view or edit.
+%table.table.table-striped.table-bordered.clickableRows
+  %tr
+    %th Requirement id
+    %th Short name
+    %th Description
+    %th Rationale
+    / %th Originator
+    / %th Fit criterion
+    / %th Customer satisfaction
+    / %th Customer dissatisfaction
+    / %th Priority
+    / %th Author
+    %th
+
+  - @section.requirements.each do |requirement|
+    %tr{data: {url: requirement_path(requirement)}}
+      %td= requirement.identification
+      %td= requirement.short_name
+      %td= requirement.description
+      %td= requirement.rationale
+      / %td= requirement.originator
+      / %td= requirement.fit_criterion
+      / %td= requirement.customer_satisfaction
+      / %td= requirement.customer_dissatisfaction
+      / %td= requirement.priority
+      / %td= requirement.author.email if requirement.author
+      %td= link_to 'Destroy', requirement, :confirm => 'Are you sure?', :method => :delete

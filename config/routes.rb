@@ -1,5 +1,10 @@
 Requirements::Application.routes.draw do
 
+  resources :sections, only: [:show, :index]
+
+  get "imports/new"
+  post "imports/import"
+
   resources :categories
 
   resources :conflicts, only: [:index, :create, :destroy]
