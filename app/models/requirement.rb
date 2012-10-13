@@ -1,6 +1,7 @@
 class Requirement < ActiveRecord::Base
   attr_accessible :customer_dissatisfaction, :customer_satisfaction, :description, :requirement_type_id, :identification, :conflicting_requirement_ids
   attr_accessible :fit_criterion, :history, :originator, :priority, :rationale, :supporting_materials, :dependency_ids, :related_requirement_ids, :short_name
+  attr_accessible :section_id, :indentation
   validates_presence_of :requirement_type
   acts_as_list scope: :requirement_type
 
@@ -20,6 +21,8 @@ class Requirement < ActiveRecord::Base
   belongs_to :dependency, polymorphic: true
   has_many :dependent_requirements, as: :dependency, class_name: "Requirement"
   has_many :dependent_p_lang_requirements, as: :dependency, class_name: "PLangRequirement"
+
+  belongs_to :section
 
   def children
     dependent_requirements + dependent_p_lang_requirements

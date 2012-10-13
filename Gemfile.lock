@@ -40,6 +40,8 @@ GEM
       execjs
     coffee-script-source (1.3.3)
     commonjs (0.2.6)
+    csv-mapper (0.5.1)
+      fastercsv
     devise (2.1.2)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
@@ -49,6 +51,7 @@ GEM
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
+    fastercsv (1.5.5)
     gon (2.2.2)
       actionpack (>= 2.3.0)
       json
@@ -149,6 +152,7 @@ PLATFORMS
 DEPENDENCIES
   acts_as_list
   coffee-rails (~> 3.2.1)
+  csv-mapper
   devise
   gon
   haml-rails

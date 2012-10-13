@@ -6,4 +6,8 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-RequirementType.create(name: "Functional requirement", "Non-functional requirement")
+RequirementType.create(name: "Functional requirement", short_name: "FR")
+RequirementType.create(name: "Non-functional requirement", short_name: "QR")
+Section.create(name: "Requirements")
+Section.create(name: "Projects")
+Section.create(name: "Mobile")
