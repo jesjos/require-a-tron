@@ -10,6 +10,7 @@
     %th Short name
     %th Description
     %th Rationale
+    %th Dependency
     / %th Originator
     / %th Fit criterion
     / %th Customer satisfaction
@@ -24,6 +25,7 @@
       %td= requirement.short_name
       %td= requirement.description
       %td= requirement.rationale
+      %td= requirement.dependency ? link_to(requirement.dependency.identification, requirement.dependency) : ""
       / %td= requirement.originator
       / %td= requirement.fit_criterion
       / %td= requirement.customer_satisfaction
