@@ -1,0 +1,12 @@
+= "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
+= "% Section: #{@section.name}"
+= ""
+
+- @requirements.each do |r|
+	\\natlang
+	= "\t{#{r.identification}}"
+	= "\t{#{r.short_name}}"
+	= "\t{#{r.description}}"
+	= "\t{#{r.rationale}}"
+	= "\t{#{r.fit_criterion}}"
+	= "\t{#{r.priority}}"
