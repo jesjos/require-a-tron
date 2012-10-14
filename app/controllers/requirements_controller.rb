@@ -36,7 +36,8 @@ class RequirementsController < ApplicationController
   def new
     @requirement = Requirement.new
     @requirement_types = RequirementType.all.collect {|t| [t.name, t.id]}
-    @requirements = Requirement.all
+    @requirements = Requirement.all.collect {|r| [r.pretty_name, r.id]}
+    @sections = Section.all.collect { |s| [s.name, s.id] }
 
     respond_to do |format|
       format.html # new.html.erb
@@ -48,6 +49,7 @@ class RequirementsController < ApplicationController
   def edit
     @requirement = Requirement.find(params[:id])
     @requirements = Requirement.all.collect {|r| [r.pretty_name, r.id]}
+    @sections = Section.all.collect { |s| [s.name, s.id] }
   end
 
   # POST /requirements

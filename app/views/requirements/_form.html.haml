@@ -54,6 +54,9 @@
       .control-group
         = f.label :dependency, class: "control-label"
         .controls= f.select :dependency_id, @requirements
+      .control-group
+        = f.label :section, class: "control-label"
+        .controls= f.select :section_id, @sections
         
   .control-group
     .controls
