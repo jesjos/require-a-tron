@@ -9,5 +9,6 @@
 	= "\t{#{r.short_name}}".html_safe
 	= "\t{#{r.description}}".html_safe
 	= "\t{#{r.rationale}}".html_safe
+	= "\t{#{r.dependency ? r.dependency.identification : ""}}".html_safe
 	= "\t{#{r.fit_criterion}}".html_safe
 	= "\t{#{r.priority}}".html_safe
