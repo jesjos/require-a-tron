@@ -1,6 +1,8 @@
 %h1 
   Section
   = @section.name
+%h2
+  = link_to "Get this section as LaTeX code", section_path(@section, format: :text)
 %p Click a requirement to view or edit.
 %table.table.table-striped.table-bordered.clickableRows
   %tr
