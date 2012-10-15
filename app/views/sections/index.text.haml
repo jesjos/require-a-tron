@@ -1,7 +1,9 @@
+= "\\section{Functional Requirements}"
 - @sections.each do |s|
 	= "% -------------------------"
-	= "% Section: #{s.name}"
+	= "% Subsection: #{s.name}"
 	= ""
+	= "\\subsection{#{s.name}}"
 
 	- s.requirements.each do |r|
 		\\natlang
