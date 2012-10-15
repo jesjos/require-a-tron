@@ -4,11 +4,11 @@
 
 - @requirements.each do |r|
 	\\natlang
-	= "\t{#{r.indentation}}"
-	= "\t{#{r.identification}}".html_safe
-	= "\t{#{r.short_name}}".html_safe
-	= "\t{#{r.description}}".html_safe
-	= "\t{#{r.rationale}}".html_safe
-	= "\t{#{r.dependency ? r.dependency.identification : ""}}".html_safe
-	= "\t{#{r.fit_criterion}}".html_safe
-	= "\t{#{r.priority}}".html_safe
+	= sanitize_string("\t{#{r.indentation}}")
+	= sanitize_string("\t{#{r.identification}}").html_safe
+	= sanitize_string("\t{#{r.short_name}}").html_safe
+	= sanitize_string("\t{#{r.description}}").html_safe
+	= sanitize_string("\t{#{r.rationale}}").html_safe
+	= sanitize_string("\t{#{r.dependency ? r.dependency.identification : ""}}").html_safe
+	= sanitize_string("\t{#{r.fit_criterion}}").html_safe
+	= sanitize_string("\t{#{r.priority}}").html_safe
