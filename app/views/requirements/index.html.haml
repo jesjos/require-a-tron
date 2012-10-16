@@ -1,6 +1,6 @@
 %h1 
   Listing
-  = @requirement_count
+  = @requirements_count
   requirements
 %p Click a requirement to view or edit.
 
@@ -37,7 +37,7 @@
         / %td= requirement.priority
         / %td= requirement.author.email if requirement.author
         %td= link_to 'Destroy', requirement, :confirm => 'Are you sure?', :method => :delete
-        
+
 %h2 Unsectioned requirements
 %table.table.table-striped.table-bordered.clickableRows
   %tr
