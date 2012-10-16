@@ -3,7 +3,9 @@ class RequirementsController < ApplicationController
   # GET /requirements
   # GET /requirements.json
   def index
-    @requirements = Requirement.all
+    @requirements_count = Requirement.count
+    @sections = Section.all
+    @unsectioned_requirements = Requirement.where(section_id: nil)
 
     respond_to do |format|
       format.html # index.html.erb
